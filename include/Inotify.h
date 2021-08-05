@@ -23,8 +23,8 @@ public:
         _fileD = inotify_init();
         _watchD = inotify_add_watch(_fileD, path.c_str(), _mode );
     }
-    void start(){
-        read(_fileD,buffer,BUFFER_LEN);
+    void startAsync(){
+        start();
     }
     int mode(){
         return _mode;
@@ -33,6 +33,16 @@ public:
 
     }
 private:
+    void start(){
+        int len;
+        while (true)
+        {
+            len = read(_fileD,buffer,BUFFER_LEN);
+            std::cout<<"CHANGE"<<std::endl;
+            
+        }
+        
+    }
     template <class T>
     void setModes(T var){
         std::cout<<var<<std::endl;

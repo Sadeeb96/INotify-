@@ -3,7 +3,8 @@
 #include "include/Inotify.h"
 using namespace std;
 int main(){
-    Inotify i = Inotify("/home/ahsan/ascipc","modify","create");
+    Inotify i = Inotify("/home/ahsan/ascipc/","modify","create");
     i.init();
-    i.start();
+    i.startAsync();
+    
 }
